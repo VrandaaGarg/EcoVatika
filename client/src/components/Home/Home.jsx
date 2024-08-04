@@ -1,9 +1,61 @@
-import React from "react";
+/* eslint-disable no-unused-vars */
+/* eslint-disable react/no-unescaped-entities */
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import Quiz from "../../Pages/Quiz";
 import Faqs from "../../Pages/Faqs";
+import axios from "axios";
 
 function Home() {
+  const [email, setEmail] = useState("");
+
+  const baseUrl = "http://localhost:5000";
+
+  const sendEmail = async () => {
+    let dataSend = {
+      email: email,
+      subject: "EcoVatika - Say Hello!",
+      message: `Subject: 🌟 Welcome to the EcoVatika Community! 🌿
+Dear Eco Enthusiast,
+
+Thank you for subscribing to the EcoVatika newsletter! We're thrilled to have you join our vibrant community dedicated to promoting sustainability and eco-friendly living.
+
+Here’s what you can look forward to:
+
+🌱 Sustainable Living Tips: Receive regular insights on how to reduce your carbon footprint and make greener choices every day.
+
+🛒 Eco-Friendly Product Highlights: Discover and shop the best sustainable products available on our EcoStore marketplace.
+
+💡 Innovative Green Ideas: Stay informed about the latest trends and innovations in sustainability.
+
+We're excited to embark on this journey with you and work together to make a positive impact on our planet.
+
+If you have any questions, suggestions, or stories to share, feel free to reach out to us at ecovatika@gmail.com .
+
+Thank you for being a part of EcoVatika. Let's make sustainability a way of life!
+
+Warm regards,
+
+The EcoVatika Team
+By Vivek and Vranda`,
+    };
+
+    const res = await fetch(`${baseUrl}/email/sendEmail`, {
+      method: "POST",
+      body: JSON.stringify(dataSend),
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+      },
+    })
+      // HANDLING ERRORS
+      .then((res) => {
+        console.log(res);
+        if (res.status > 199 && res.status < 300) {
+          alert("Send Successfully !");
+        }
+      });
+  };
   return (
     <div className=" dark:bg-black bg-white">
       {/* ///////////////Landing page///////////////////// */}
@@ -122,6 +174,54 @@ function Home() {
       {/* ///////////////////////////Quiz////////////////////////// */}
 
       <Quiz />
+      <div className="md:flex bg-gray-200 dark:bg-green-900 p-3 m-4 rounded-2xl border-black border-r-2 border-b-2 md:bg-white  dark:md:bg-black md:border-none ">
+        <div className="flex-1 grid place-content-center md:hidden">
+          <img src="/newsLetter.png" className="h-36 md:h-72 rounded-3xl" />
+        </div>
+        <div className="flex-1 md:grid place-content-center hidden">
+          <img src="/newsLetter.png" className="h-36 md:h-72 rounded-3xl" />
+        </div>
+        <div className="flex-1 grid text-center md:text-left place-content-center md:px-16 gap-2">
+          <h1 className="text-green-800 font-bold text-3xl dark:text-white dark:md:text-[#7cd136]">
+            <span className="md:block">📧</span>Subscribe to our News Letter
+          </h1>
+          <h3 className="text-gray-500 md:text-xl font-semibold dark:text-gray-100">
+            subscribe to our newsletter and stay updated
+          </h3>
+
+          <div className="w-full">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              strokeWidth={1.5}
+              stroke="currentColor"
+              className="size-6 relative top-[11px] left-[20px]"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                d="M21.75 6.75v10.5a2.25 2.25 0 0 1-2.25 2.25h-15a2.25 2.25 0 0 1-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0 0 19.5 4.5h-15a2.25 2.25 0 0 0-2.25 2.25m19.5 0v.243a2.25 2.25 0 0 1-1.07 1.916l-7.5 4.615a2.25 2.25 0 0 1-2.36 0L3.32 8.91a2.25 2.25 0 0 1-1.07-1.916V6.75"
+              />
+            </svg>
+
+            <input
+              type="text"
+              placeholder="Your Email"
+              className="pl-[60px] p-[20px] border-2 border-gray-500 h-[40px] rounded w-full relative bottom-[22px] bg-transparent"
+              onChange={(e) => setEmail(e.target.value)}
+            />
+          </div>
+          <div>
+            <button
+              className="bg-green-500 font-semibold text-sm md:text-base  p-2 md:px-6 border-black border-b-2 md:border-b-4 rounded-lg hover:text-white hover:shadow-sm hover:bg-green-700"
+              onClick={(e) => sendEmail(email)}
+            >
+              Subscribe
+            </button>
+          </div>
+        </div>
+      </div>
 
       {/* ////////////////////Faqs///////////////// */}
       <Faqs />
