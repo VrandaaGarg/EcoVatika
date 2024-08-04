@@ -15,7 +15,7 @@ function Home() {
             className="object-cover w-[80vw] h-[80vh] md:h-[75vh] rounded-3xl"
           />
           <div className="">
-            <h1 className="absolute inset-0 flex items-center justify-center text-white text-3xl md:text-6xl font-bold dark:text-black">
+            <h1 className="absolute inset-0 flex items-center justify-center text-white text-5xl md:text-6xl font-bold dark:text-black">
               EcoVatika
             </h1>
           </div>
@@ -23,7 +23,7 @@ function Home() {
       </div>
 
       {/* ///////////////////About us///////////////////////// */}
-      <div className="mb-20 md:mb-0 md:h-[90vh] justify-center text-center grid placeholder-shown: place-content-center dark:bg-black">
+      <div className="mb-20 md:mb-0 mt-10 sm:h-[90vh] justify-center text-center grid placeholder-shown: place-content-center dark:bg-black">
         <div className="w-[70vw] md:w-[50vw] text-center md:text-left flex flex-col place-content-center gap-2 md:gap-12">
           <div className="grid place-content-center gap-2">
             <h1 className="text-2xl md:text-5xl font-bold text-[#191A23] text-center dark:text-[#7cd136]">
@@ -48,6 +48,13 @@ function Home() {
               eco-friendly choice at a time.
             </p>
           </div>
+          <div className="flex justify-center">
+            <Link to="/about">
+              <button className="bg-[#78b829] p-1 md:p-2 px-3 md:px-5 text-sm md:text-xl rounded-lg hover:bg-[#56841e]">
+                Know More <span className="text-white">&#8599;</span>
+              </button>
+            </Link>
+          </div>
         </div>
       </div>
 
@@ -61,7 +68,7 @@ function Home() {
             />
           </div>
           <div className="flex-1 grid text-center md:text-left place-content-center md:px-16 gap-2">
-            <h1 className="text-green-800 font-bold text-3xl dark:text-white">
+            <h1 className="text-green-800 font-bold text-3xl dark:text-white dark:md:text-[#7cd136]">
               <span className="md:block">🍂</span>EcoScore
             </h1>
             <h3 className="text-black md:text-xl font-semibold dark:text-gray-100">
@@ -87,7 +94,7 @@ function Home() {
             <img src="/recycle_item.png" className="h-36 md:h-72 rounded-3xl" />
           </div>
           <div className="flex-1 grid text-center md:text-left place-content-center md:px-16 gap-2">
-            <h1 className="text-green-800 font-bold text-3xl dark:text-white">
+            <h1 className="text-green-800 font-bold text-3xl dark:text-white dark:md:text-[#7cd136]">
               <span className="md:block">🍃</span>Recycle item SearchBar
             </h1>
             <h3 className="text-black md:text-xl font-semibold dark:text-gray-100">

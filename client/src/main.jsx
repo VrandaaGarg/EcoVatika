@@ -12,7 +12,9 @@ import Home from "./components/Home/Home.jsx";
 import About from "./components/About/About.jsx";
 import EcoScore from "./components/EcoScore/EcoScore.jsx";
 import RecycleItemFinder from "./components/RecycleItemFinder/RecycleItemFinder.jsx";
+import Team from "./Pages/Team.jsx";
 import SellingStore from "./components/SellingStore/SellingStore.jsx";
+
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -21,6 +23,7 @@ const router = createBrowserRouter(
       <Route path="about" element={<About />} />
       <Route path="EcoScore" element={<EcoScore />} />
       <Route path="ItemFinder" element={<RecycleItemFinder />} />
+      <Route path="team" element={<Team />} />
       <Route path="EcoSell" element={<SellingStore />} />
     </Route>
   )

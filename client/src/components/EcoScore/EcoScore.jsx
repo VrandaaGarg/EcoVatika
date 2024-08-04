@@ -1,7 +1,5 @@
-/* eslint-disable no-unused-vars */
 import React, { useState } from "react";
 import axios from "axios";
-import styles from "./tab.module.css";
 
 const EcoScore = () => {
   const [activeTab, setActiveTab] = useState("AirQuality");
@@ -204,9 +202,16 @@ const EcoScore = () => {
   };
 
   return (
-    <div className="mb-24">
-      <h1 className={styles.tabsMainHeading}>Carbon Footprint Calculator</h1>
-      <h3 className={styles.tabsMainDescription}>
+    <div className="pt-20 pb-24 dark:bg-black">
+      <div className="grid place-content-center gap-3">
+        <h1 className="text-green-600 text-center font-bold text-xl md:text-4xl mt-5 dark:text-[#7cd136]">
+          Carbon Footprint Calculator
+        </h1>
+        <div className="flex justify-center">
+          <div className="h-2 w-[20vw] md:w-[50vh] bg-green-700 rounded-xl"></div>
+        </div>
+      </div>
+      <h3 className="text-center font-medium text-gray-500  px-5 text-sm md:text-xl mt-5 mb-9 dark:mb-16 max-w-5xl mx-auto dark:text-gray-300">
         The Carbon Footprint and Air Quality Calculator is a web application
         designed to provide users with insights into their environmental impact
         and air quality health index based on various activities and metrics.
@@ -217,266 +222,286 @@ const EcoScore = () => {
         sustainability and awareness by offering concrete data on carbon
         emissions and air quality.
       </h3>
-      <div className={styles.tabsContainer}>
-        <div className={styles.buttonGroup}>
-          <button
-            className={`${styles.tabButton} ${
-              activeTab === "AirQuality" ? styles.active : ""
-            }`}
-            onClick={() => setActiveTab("AirQuality")}
-          >
-            Air Quality
-          </button>
-          <button
-            className={`${styles.tabButton} ${
-              activeTab === "CarbonFootprint" ? styles.active : ""
-            }`}
-            onClick={() => setActiveTab("CarbonFootprint")}
-          >
-            Carbon Footprint
-          </button>
-          <button
-            className={`${styles.tabButton} ${
-              activeTab === "FuelToCO2" ? styles.active : ""
-            }`}
-            onClick={() => setActiveTab("FuelToCO2")}
-          >
-            Fuel to CO2
-          </button>
-
-          <button
-            className={`${styles.tabButton} ${
-              activeTab === "TreeEquivalent" ? styles.active : ""
-            }`}
-            onClick={() => setActiveTab("TreeEquivalent")}
-          >
-            Tree Equivalent
-          </button>
-          <button
-            className={`${styles.tabButton} ${
-              activeTab === "CarTravel" ? styles.active : ""
-            }`}
-            onClick={() => setActiveTab("CarTravel")}
-          >
-            Car Travel
-          </button>
+      <div className="flex justify-center ">
+        <div className="mx-4 md:w-2/3 p-6 px-4 md:px-8 dark:bg-gray-800 rounded-2xl">
+          <div className="flex flex-wrap justify-around mb-4 gap-4">
+            <button
+              className={`bg-green-600 font-bold text-sm md:text-base py-1 md:py-2 px-2 md:px-4 rounded ${
+                activeTab === "AirQuality"
+                  ? "bg-green-800 dark:bg-[#7cd136] text-white dark:text-black"
+                  : "text-white"
+              }`}
+              onClick={() => setActiveTab("AirQuality")}
+            >
+              Air Quality
+            </button>
+            <button
+              className={`bg-green-600 font-bold text-sm md:text-base py-1 md:py-2 px-2 md:px-4 rounded ${
+                activeTab === "CarbonFootprint"
+                  ? "bg-green-800 dark:bg-[#7cd136] text-white dark:text-black"
+                  : "text-white"
+              }`}
+              onClick={() => setActiveTab("CarbonFootprint")}
+            >
+              Carbon Footprint
+            </button>
+            <button
+              className={`bg-green-600 font-bold text-sm md:text-base py-1 md:py-2 px-2 md:px-4 rounded ${
+                activeTab === "FuelToCO2"
+                  ? "bg-green-800 dark:bg-[#7cd136] text-white dark:text-black"
+                  : "text-white"
+              }`}
+              onClick={() => setActiveTab("FuelToCO2")}
+            >
+              Fuel to CO2
+            </button>
+            <button
+              className={`bg-green-600 font-bold text-sm md:text-base py-1 md:py-2 px-2 md:px-4 rounded ${
+                activeTab === "TreeEquivalent"
+                  ? "bg-green-800 dark:bg-[#7cd136] text-white dark:text-black"
+                  : "text-white"
+              }`}
+              onClick={() => setActiveTab("TreeEquivalent")}
+            >
+              Tree Equivalent
+            </button>
+            <button
+              className={`bg-green-600 font-bold text-sm md:text-base py-1 md:py-2 px-2 md:px-4 rounded ${
+                activeTab === "CarTravel"
+                  ? "bg-green-800 dark:bg-[#7cd136] text-white dark:text-black"
+                  : "text-white"
+              }`}
+              onClick={() => setActiveTab("CarTravel")}
+            >
+              Car Travel
+            </button>
+          </div>
+          {activeTab === "AirQuality" && (
+            <div className="mt-4 p-6 border rounded shadow">
+              <form onSubmit={handleAirQualitySubmit}>
+                <div className="mb-4">
+                  <label className="block text-gray-700 dark:text-white text-base md:text-xl mb-2">
+                    Ozone (O3):
+                  </label>
+                  <input
+                    type="text"
+                    placeholder="Example: 10ppm"
+                    className="border rounded p-1 md:p-2 w-full"
+                    value={airQualityData.o3}
+                    onChange={(e) =>
+                      setAirQualityData({
+                        ...airQualityData,
+                        o3: e.target.value,
+                      })
+                    }
+                  />
+                </div>
+                <div className="mb-4">
+                  <label className="block text-gray-700 dark:text-white text-base md:text-xl mb-2">
+                    Nitrogen Dioxide (NO2):
+                  </label>
+                  <input
+                    type="text"
+                    placeholder="Example: 10ppm"
+                    className="border rounded p-1 md:p-2 w-full"
+                    value={airQualityData.no2}
+                    onChange={(e) =>
+                      setAirQualityData({
+                        ...airQualityData,
+                        no2: e.target.value,
+                      })
+                    }
+                  />
+                </div>
+                <div className="mb-4">
+                  <label className="block text-gray-700 dark:text-white text-base md:text-xl mb-2">
+                    Particulate Matter (PM):
+                  </label>
+                  <input
+                    type="text"
+                    placeholder="Example: 10ppm"
+                    className="border rounded p-1 md:p-2 w-full"
+                    value={airQualityData.pm}
+                    onChange={(e) =>
+                      setAirQualityData({
+                        ...airQualityData,
+                        pm: e.target.value,
+                      })
+                    }
+                  />
+                </div>
+                <div className="flex justify-center">
+                  <button
+                    type="submit"
+                    className="bg-green-600 text-white py-2 px-4 rounded dark:bg-[#7cd136] dark:text-black"
+                  >
+                    Calculate
+                  </button>
+                </div>
+                {airQualityData.result && (
+                  <p className="mt-4 text-green-600 font-bold">
+                    Air Quality Health Index: {airQualityData.result}
+                  </p>
+                )}
+                {airQualityData.error && (
+                  <p className="mt-4 text-red-600">{airQualityData.error}</p>
+                )}
+              </form>
+            </div>
+          )}
+          {activeTab === "CarbonFootprint" && (
+            <div className="mt-4 p-6 border rounded shadow">
+              <form onSubmit={handleCarbonFootprintSubmit}>
+                <div className="mb-4">
+                  <label className="block text-gray-700 dark:text-white text-base md:text-xl mb-2">
+                    Solar Energy Consumption (kWh):
+                  </label>
+                  <input
+                    type="text"
+                    placeholder="Example: 500kWh"
+                    className="border rounded p-1 md:p-2 w-full"
+                    value={carbonFootprintData.consumption}
+                    onChange={(e) =>
+                      setCarbonFootprintData({
+                        ...carbonFootprintData,
+                        consumption: e.target.value,
+                      })
+                    }
+                  />
+                </div>
+                <div className="flex justify-center">
+                  <button
+                    type="submit"
+                    className="bg-green-600 text-white py-2 px-4 rounded dark:bg-[#7cd136] dark:text-black"
+                  >
+                    Calculate
+                  </button>
+                </div>
+                {carbonFootprintData.result && (
+                  <p className="mt-4 text-green-600 font-bold">
+                    Carbon Equivalent: {carbonFootprintData.result}
+                  </p>
+                )}
+                {carbonFootprintData.error && (
+                  <p className="mt-4 text-red-600">
+                    {carbonFootprintData.error}
+                  </p>
+                )}
+              </form>
+            </div>
+          )}
+          {activeTab === "FuelToCO2" && (
+            <div className="mt-4 p-6 border rounded shadow">
+              <form onSubmit={handleFuelToCO2Submit}>
+                <div className="mb-4">
+                  <label className="block text-gray-700 dark:text-white text-base md:text-xl mb-2">
+                    Fuel Consumption (litres):
+                  </label>
+                  <input
+                    type="text"
+                    placeholder="Example: Diesel 10L"
+                    className="border rounded p-1 md:p-2 w-full"
+                    value={fuelData.litres}
+                    onChange={(e) =>
+                      setFuelData({ ...fuelData, litres: e.target.value })
+                    }
+                  />
+                </div>
+                <div className="flex justify-center">
+                  <button
+                    type="submit"
+                    className="bg-green-600 text-white py-2 px-4 rounded dark:bg-[#7cd136] dark:text-black"
+                  >
+                    Calculate
+                  </button>
+                </div>
+                {fuelData.result && (
+                  <p className="mt-4 text-green-600 font-bold">
+                    Carbon Equivalent: {fuelData.result}
+                  </p>
+                )}
+                {fuelData.error && (
+                  <p className="mt-4 text-red-600">{fuelData.error}</p>
+                )}
+              </form>
+            </div>
+          )}
+          {activeTab === "TreeEquivalent" && (
+            <div className="mt-4 p-6 border rounded shadow">
+              <form onSubmit={handleTreeEquivalentSubmit}>
+                <div className="mb-4">
+                  <label className="block text-gray-700 dark:text-white text-base md:text-xl mb-2">
+                    Weight (kg):
+                  </label>
+                  <input
+                    type="text"
+                    placeholder="Example: 200kg"
+                    className="border rounded p-1 md:p-2 w-full"
+                    value={treeData.weight}
+                    onChange={(e) =>
+                      setTreeData({ ...treeData, weight: e.target.value })
+                    }
+                  />
+                </div>
+                <div className="flex justify-center">
+                  <button
+                    type="submit"
+                    className="bg-green-600 text-white py-2 px-4 rounded dark:bg-[#7cd136] dark:text-black"
+                  >
+                    Calculate
+                  </button>
+                </div>
+                {treeData.result && (
+                  <p className="mt-4 text-green-600 font-bold">
+                    Number of Trees: {treeData.result}
+                  </p>
+                )}
+                {treeData.error && (
+                  <p className="mt-4 text-red-600">{treeData.error}</p>
+                )}
+              </form>
+            </div>
+          )}
+          {activeTab === "CarTravel" && (
+            <div className="mt-4 p-6 border rounded shadow">
+              <form onSubmit={handleCarTravelSubmit}>
+                <div className="mb-4">
+                  <label className="block text-gray-700 dark:text-white text-base md:text-xl mb-2">
+                    Distance (km):
+                  </label>
+                  <input
+                    type="text"
+                    placeholder="Example: 85km"
+                    className="border rounded p-1 md:p-2 w-full"
+                    value={carTravelData.distance}
+                    onChange={(e) =>
+                      setCarTravelData({
+                        ...carTravelData,
+                        distance: e.target.value,
+                      })
+                    }
+                  />
+                </div>
+                <div className="flex justify-center">
+                  <button
+                    type="submit"
+                    className="bg-green-600 dark:bg-[#7cd136] dark:text-black text-white py-2 px-4 rounded"
+                  >
+                    Calculate
+                  </button>
+                </div>
+                {carTravelData.result && (
+                  <p className="mt-4 text-green-600 font-bold">
+                    Carbon Equivalent: {carTravelData.result}
+                  </p>
+                )}
+                {carTravelData.error && (
+                  <p className="mt-4 text-red-600">{carTravelData.error}</p>
+                )}
+              </form>
+            </div>
+          )}
         </div>
-
-        {activeTab === "AirQuality" && (
-          <div className={styles.tabContent}>
-            <h4 className={styles.tabHeading}>
-              Assesses the air quality health index based on levels of
-              pollutants like ozone (O3), nitrogen dioxide (NO2), and
-              particulate matter (PM). Users input the concentrations of these
-              pollutants to get the air quality health index, indicating the
-              potential health impacts.
-            </h4>
-            <form onSubmit={handleAirQualitySubmit} className={styles.tabForm}>
-              <label className={styles.tabLabel}>O3 (ppm):</label>
-              <input
-                type="number"
-                step="0.01"
-                value={airQualityData.o3}
-                onChange={(e) =>
-                  setAirQualityData({ ...airQualityData, o3: e.target.value })
-                }
-                className={styles.tabInput}
-              />
-              <label className={styles.tabLabel}>NO2 (ppm):</label>
-              <input
-                type="number"
-                step="0.01"
-                value={airQualityData.no2}
-                onChange={(e) =>
-                  setAirQualityData({ ...airQualityData, no2: e.target.value })
-                }
-                className={styles.tabInput}
-              />
-              <label className={styles.tabLabel}>PM (µg/m³):</label>
-              <input
-                type="number"
-                step="0.01"
-                value={airQualityData.pm}
-                onChange={(e) =>
-                  setAirQualityData({ ...airQualityData, pm: e.target.value })
-                }
-                className={styles.tabInput}
-              />
-              <button type="submit" className={styles.tabButtonSubmit}>
-                Submit
-              </button>
-              {airQualityData.result && (
-                <div className={styles.tabResult}>
-                  Health Index: {airQualityData.result}
-                </div>
-              )}
-              {airQualityData.error && (
-                <div className={styles.tabError}>{airQualityData.error}</div>
-              )}
-            </form>
-          </div>
-        )}
-
-        {activeTab === "CarbonFootprint" && (
-          <div className={styles.tabContent}>
-            <h4 className={styles.tabHeading}>
-              Calculates the carbon footprint from the consumption of solar
-              energy. Users input the amount of energy consumed to receive the
-              carbon equivalent emissions.
-            </h4>
-            <form
-              onSubmit={handleCarbonFootprintSubmit}
-              className={styles.tabForm}
-            >
-              <label className={styles.tabLabel}>
-                Energy Consumption (kWh):
-              </label>
-              <input
-                type="number"
-                step="0.01"
-                value={carbonFootprintData.consumption}
-                onChange={(e) =>
-                  setCarbonFootprintData({
-                    ...carbonFootprintData,
-                    consumption: e.target.value,
-                  })
-                }
-                className={styles.tabInput}
-              />
-              <button type="submit" className={styles.tabButtonSubmit}>
-                Submit
-              </button>
-              {carbonFootprintData.result && (
-                <div className={styles.tabResult}>
-                  Carbon Equivalent: {carbonFootprintData.result} kg CO2e
-                </div>
-              )}
-              {carbonFootprintData.error && (
-                <div className={styles.tabError}>
-                  {carbonFootprintData.error}
-                </div>
-              )}
-            </form>
-          </div>
-        )}
-
-        {activeTab === "FuelToCO2" && (
-          <div className={styles.tabContent}>
-            <h4 className={styles.tabHeading}>
-              Estimates the carbon dioxide equivalent emissions produced from
-              burning a specified amount of fuel (in litres). Users input the
-              type of fuel and the amount consumed to get the carbon equivalent.
-            </h4>
-            <form onSubmit={handleFuelToCO2Submit} className={styles.tabForm}>
-              <label className={styles.tabLabel}>Fuel Type:</label>
-              <select
-                value="Petrol"
-                onChange={(e) =>
-                  setFuelData({ ...fuelData, type: e.target.value })
-                }
-                className={styles.tabInput}
-              >
-                <option value="Petrol">Petrol</option>
-                <option value="Diesel">Diesel</option>
-                <option value="NaturalGas">Natural Gas</option>
-              </select>
-              <label className={styles.tabLabel}>Litres:</label>
-              <input
-                type="number"
-                step="0.01"
-                value={fuelData.litres}
-                onChange={(e) =>
-                  setFuelData({ ...fuelData, litres: e.target.value })
-                }
-                className={styles.tabInput}
-              />
-              <button type="submit" className={styles.tabButtonSubmit}>
-                Submit
-              </button>
-              {fuelData.result && (
-                <div className={styles.tabResult}>
-                  Carbon Equivalent: {fuelData.result} kg CO2e
-                </div>
-              )}
-              {fuelData.error && (
-                <div className={styles.tabError}>{fuelData.error}</div>
-              )}
-            </form>
-          </div>
-        )}
-
-        {activeTab === "TreeEquivalent" && (
-          <div className={styles.tabContent}>
-            <h4 className={styles.tabHeading}>
-              Converts a given weight (in kg) of carbon emissions into the
-              equivalent number of trees needed to offset those emissions. Users
-              input the weight of emissions to see how many trees are required
-              to absorb that amount of CO2.
-            </h4>
-            <form
-              onSubmit={handleTreeEquivalentSubmit}
-              className={styles.tabForm}
-            >
-              <label className={styles.tabLabel}>Weight (kg):</label>
-              <input
-                type="number"
-                step="0.01"
-                value={treeData.weight}
-                onChange={(e) =>
-                  setTreeData({ ...treeData, weight: e.target.value })
-                }
-                className={styles.tabInput}
-              />
-              <button type="submit" className={styles.tabButtonSubmit}>
-                Submit
-              </button>
-              {treeData.result && (
-                <div className={styles.tabResult}>
-                  Number of Trees: {treeData.result}
-                </div>
-              )}
-              {treeData.error && (
-                <div className={styles.tabError}>{treeData.error}</div>
-              )}
-            </form>
-          </div>
-        )}
-
-        {activeTab === "CarTravel" && (
-          <div className={styles.tabContent}>
-            <h4 className={styles.tabHeading}>
-              Calculates the carbon footprint for a given distance traveled by
-              car. Users input the distance traveled in kilometers to receive
-              the carbon equivalent emissions for that journey.
-            </h4>
-            <form onSubmit={handleCarTravelSubmit} className={styles.tabForm}>
-              <label className={styles.tabLabel}>Distance (km):</label>
-              <input
-                type="number"
-                step="0.01"
-                value={carTravelData.distance}
-                onChange={(e) =>
-                  setCarTravelData({
-                    ...carTravelData,
-                    distance: e.target.value,
-                  })
-                }
-                className={styles.tabInput}
-              />
-              <button type="submit" className={styles.tabButtonSubmit}>
-                Submit
-              </button>
-              {carTravelData.result && (
-                <div className={styles.tabResult}>
-                  Carbon Equivalent: {carTravelData.result} kg CO2e
-                </div>
-              )}
-              {carTravelData.error && (
-                <div className={styles.tabError}>{carTravelData.error}</div>
-              )}
-            </form>
-          </div>
-        )}
       </div>
     </div>
   );
