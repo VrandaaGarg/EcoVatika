@@ -10,7 +10,7 @@ function Header() {
 
   return (
     <nav className="bg-white border-gray-200">
-      <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
+      <div className=" flex flex-wrap items-center justify-between px-4 md:px-14  p-4 fixed z-10 w-lvw bg-white">
         <NavLink
           to="/"
           className="flex items-center space-x-3 rtl:space-x-reverse"
@@ -45,7 +45,9 @@ function Header() {
           </svg>
         </button>
         <div
-          className={`${isOpen ? "block" : "hidden"} w-full md:block md:w-auto`}
+          className={`${
+            isOpen ? "block" : "hidden"
+          } absolute top-full left-0 w-full bg-white z-10 md:block md:static md:w-auto md:z-auto md:bg-transparent`}
           id="navbar-default"
         >
           <ul className="font-medium flex flex-col p-4 md:p-0 mt-4 border border-gray-100 rounded-lg bg-white md:flex-row md:space-x-8 rtl:space-x-reverse md:mt-0 md:border-0 md:bg-white">
@@ -86,7 +88,6 @@ function Header() {
                 ECOSCORE
               </NavLink>
             </li>
-
             <li>
               <NavLink
                 to="/ItemFinder"
