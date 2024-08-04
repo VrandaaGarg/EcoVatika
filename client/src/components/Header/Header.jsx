@@ -10,8 +10,8 @@ function Header() {
   };
 
   return (
-    <nav className="bg-white border-gray-200 dark:bg-black">
-      <div className=" flex flex-wrap items-center justify-between px-4 md:px-14  p-4 fixed z-10 w-lvw bg-white dark:bg-black">
+    <nav className="bg-white border-gray-200 dark:bg-black z-20">
+      <div className=" flex flex-wrap items-center justify-between px-4 md:px-14 z-30  p-4 fixed w-lvw bg-white dark:bg-black">
         <NavLink
           to="/"
           className="flex items-center space-x-3 rtl:space-x-reverse"
