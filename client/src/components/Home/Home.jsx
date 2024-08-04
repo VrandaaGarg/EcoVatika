@@ -5,7 +5,7 @@ import Faqs from "../../Pages/Faqs";
 
 function Home() {
   return (
-    <div className=" dark:bg-black bg-white">
+    <div className="dark:bg-black bg-white pb-10">
       {/* ///////////////Landing page///////////////////// */}
       <div className="h-lvh relative pt-20 md:pt-16 dark:bg-black">
         <div className="w-full h-[85vh] grid place-content-center relative mb-5 py-10">
@@ -123,6 +123,34 @@ function Home() {
 
       <Quiz />
 
+      {/* ///////////////////////Features 2//////////////////////////// */}
+      <div className="md:px-16 flex flex-col px-8 gap-16 mb-11 dark:bg-black">
+        <div className="md:flex bg-gray-200 dark:bg-green-900 p-3 m-4 rounded-2xl border-black border-r-2 border-b-2 md:bg-white  dark:md:bg-black md:border-none ">
+          <div className="flex-1 grid place-content-center">
+            <img src="/Ecosell.png" className="h-36 md:h-72 rounded-3xl my-3" />
+          </div>
+          <div className="flex-1 grid text-center md:text-left place-content-center md:px-16 gap-2">
+            <h1 className="text-green-800 font-bold text-3xl dark:text-white dark:md:text-[#7cd136]">
+              <span className="md:block">🍁</span>EcoStore
+            </h1>
+            <h3 className="text-black md:text-xl font-semibold dark:text-gray-100">
+              Reduce, Reuse, Rehome: Material Exchange Store
+            </h3>
+            <p className="text-gray-600 text-sm md:text-base dark:text-gray-300">
+              Platform to connect users for exchanging unwanted materials Reduce
+              waste by giving pre-loved items a new purpose Users post item
+              details and connect with interested parties.We fosters a
+              community-driven approach to waste reduction. Users can list
+              unwanted items, providing details and descriptions.
+            </p>
+            <Link to="/EcoSell">
+              <button className="bg-green-500 font-semibold text-sm md:text-base p-1 md:p-2 md:px-6 border-black border-b-2 md:border-b-4 rounded-lg hover:text-white hover:shadow-sm hover:bg-green-700">
+                Check
+              </button>
+            </Link>
+          </div>
+        </div>
+      </div>
       {/* ////////////////////Faqs///////////////// */}
       <Faqs />
     </div>
