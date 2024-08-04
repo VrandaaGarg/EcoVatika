@@ -10,7 +10,7 @@ function Header() {
   };
 
   return (
-    <nav className="bg-white border-gray-200">
+    <nav className="bg-white border-gray-200 dark:bg-black">
       <div className=" flex flex-wrap items-center justify-between px-4 md:px-14  p-4 fixed z-10 w-lvw bg-white dark:bg-black">
         <NavLink
           to="/"
@@ -54,10 +54,10 @@ function Header() {
         <div
           className={`${
             isOpen ? "block" : "hidden"
-          } absolute top-full left-0 w-full bg-white z-10 md:block md:static md:w-auto md:z-auto md:bg-transparent`}
+          } absolute top-full left-0 w-full bg-white dark:bg-black z-10 md:block md:static md:w-auto md:z-auto md:bg-transparent`}
           id="navbar-default"
         >
-          <ul className="font-medium flex flex-col p-4 md:p-0 mt-4 border border-gray-100 rounded-lg bg-white  dark:bg-black  md:flex-row md:space-x-8 rtl:space-x-reverse md:mt-0 md:border-0 md:bg-white">
+          <ul className="font-medium flex flex-col p-4 md:p-0 mt-4 border border-gray-100 dark:border-black rounded-lg bg-white  dark:bg-black  md:flex-row md:space-x-8 rtl:space-x-reverse md:mt-0 md:border-0 md:bg-white">
             <li>
               <NavLink
                 to="/"
@@ -113,6 +113,20 @@ function Header() {
                 }
               >
                 RECYCLE ITEM SEARCHBAR
+              </NavLink>
+            </li>
+            <li>
+              <NavLink
+                to="/EcoSell"
+                className={({ isActive }) =>
+                  `block py-2 px-3 rounded ${
+                    isActive
+                      ? "text-green-700 dark:text-[#7cd136]"
+                      : "text-gray-900 dark:text-white"
+                  } hover:text-green-700 dark:hover:text-[#7cd136] md:hover:bg-transparent md:border-0 md:hover:text-green-700 md:p-0`
+                }
+              >
+                ECOSTORE
               </NavLink>
             </li>
           </ul>

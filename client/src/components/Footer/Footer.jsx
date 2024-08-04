@@ -35,28 +35,42 @@ function Footer() {
                 </li>
               </ul>
             </div>
-            <div>
-              <h2 className="mb-6 text-sm font-semibold text-white uppercase ">
-                Follow us
-              </h2>
-              <ul className="text-gray-500 dark:text-gray-400 font-medium">
-                <li className="mb-4">
-                  <Link
-                    to="https://github.com/themesberg/flowbite"
-                    className="hover:underline "
-                  >
-                    Github
-                  </Link>
-                </li>
-                <li>
-                  <Link
-                    to="https://discord.gg/4eeurUVvTy"
-                    className="hover:underline"
-                  >
-                    Discord
-                  </Link>
-                </li>
-              </ul>
+            <div className="flex flex-col gap-10">
+              <div className="">
+                <h2 className="mb-6 text-sm font-semibold text-white uppercase ">
+                  Follow us
+                </h2>
+                <ul className="text-gray-500 dark:text-gray-400 font-medium">
+                  <li className="mb-4">
+                    <Link
+                      to="https://github.com/themesberg/flowbite"
+                      className="hover:underline "
+                    >
+                      Github
+                    </Link>
+                  </li>
+                  <li>
+                    <Link
+                      to="https://discord.gg/4eeurUVvTy"
+                      className="hover:underline"
+                    >
+                      Discord
+                    </Link>
+                  </li>
+                </ul>
+              </div>
+              <div className="">
+                <h2 className="mb-6 text-sm font-semibold text-white uppercase ">
+                  Team
+                </h2>
+                <ul className="text-gray-500 dark:text-gray-400 font-medium">
+                  <li>
+                    <Link to="/team" className="hover:underline">
+                      Our Team
+                    </Link>
+                  </li>
+                </ul>
+              </div>
             </div>
             <div>
               <h2 className="mb-6 text-sm font-semibold text-white uppercase ">
@@ -83,8 +97,10 @@ function Footer() {
                     Recycle Item SearchBar
                   </Link>
                 </li>
-                <li>
-                  <Link to="/team">Team</Link>
+                <li className="mb-4">
+                  <Link to="/EcoSell" className="hover:underline">
+                    EcoStore
+                  </Link>
                 </li>
               </ul>
             </div>
