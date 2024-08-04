@@ -1,0 +1,62 @@
+.SellinStore {
+    background-image: url("./sellingBack.png");
+    background-size: cover;
+    min-height: 100Vh;
+    padding-top: 80px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.formStyling form {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    background: rgba( 212, 255, 212, 0.35);
+    box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37);
+    backdrop-filter: blur( 20px);
+    -webkit-backdrop-filter: blur( 20px);
+    border-radius: 10px;
+    border: 1px solid rgba( 255, 255, 255, 0.18);
+    padding: 20px 0;
+    margin: 20px;
+    margin-top: 0;
+}
+
+.formStyling form input {
+    height: 30px;
+    padding-left: 20px;
+    border-radius: 5px;
+    border: none;
+    margin: 20px;
+    margin-top: 10px;
+    margin-bottom: 0;
+    outline: none;
+}
+
+.formStyling form button {
+    padding: 10px 20px;
+    background-color: #4CAF50;
+    color: white;
+    border-radius: 10px;
+    cursor: pointer;
+    border: none;
+    align-self: center;
+    margin: 10px;
+}
+
+@media (max-width: 400px) {
+    .formStyling form input {
+        width: 100%;
+        margin: 0;
+        margin-top: 10px;
+    }
+    .formStyling form {
+        padding: 10px;
+    }
+    .formStyling form p {
+        position: absolute;
+        top: 5px;
+        right: 10px;
+    }
+}
