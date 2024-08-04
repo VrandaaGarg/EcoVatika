@@ -186,64 +186,6 @@ By Vivek and Vranda`,
 
       <Quiz />
 
-      <div className="md:flex bg-gray-200 dark:bg-green-900 p-3 m-4 rounded-2xl border-black border-r-2 border-b-2 md:bg-white  dark:md:bg-black md:border-none ">
-        <div className="flex-1 grid place-content-center md:hidden">
-          <img src="/newsLetter.png" className="h-36 md:h-72 rounded-3xl" />
-        </div>
-        <div className="flex-1 md:grid place-content-center hidden">
-          <img src="/newsLetter.png" className="h-36 md:h-72 rounded-3xl" />
-        </div>
-        <div className="flex-1 grid text-center md:text-left place-content-center md:px-16 gap-2">
-          <h1 className="text-green-800 font-bold text-3xl dark:text-white dark:md:text-[#7cd136]">
-            <span className="md:block">📧</span>Subscribe to our News Letter
-          </h1>
-          <h3 className="text-gray-500 md:text-xl font-semibold dark:text-gray-100">
-            subscribe to our newsletter and stay updated
-          </h3>
-
-          <div className="w-full">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 24 24"
-              strokeWidth={1.5}
-              stroke="currentColor"
-              className="size-6 relative top-[11px] left-[20px]"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                d="M21.75 6.75v10.5a2.25 2.25 0 0 1-2.25 2.25h-15a2.25 2.25 0 0 1-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0 0 19.5 4.5h-15a2.25 2.25 0 0 0-2.25 2.25m19.5 0v.243a2.25 2.25 0 0 1-1.07 1.916l-7.5 4.615a2.25 2.25 0 0 1-2.36 0L3.32 8.91a2.25 2.25 0 0 1-1.07-1.916V6.75"
-              />
-            </svg>
-
-            <input
-              type="text"
-              placeholder="Your Email"
-              className="pl-[60px] p-[20px] border-2 border-gray-500 h-[40px] rounded w-full relative bottom-[22px] bg-transparent"
-              onChange={(e) => setEmail(e.target.value)}
-            />
-          </div>
-          <div>
-            <button
-              className="bg-green-500 font-semibold text-sm md:text-base  p-2 md:px-6 border-black border-b-2 md:border-b-4 rounded-lg hover:text-white hover:shadow-sm hover:bg-green-700"
-              onClick={(e) => {
-                sendEmail(email);
-                handleClick();
-              }}
-            >
-              Subscribe
-            </button>
-          </div>
-        </div>
-        {show && (
-          <div className="fixed bottom-4 right-4 p-3 bg-green-700 text-white rounded-lg shadow-lg transition-opacity duration-500 opacity-100 font-medium">
-            {message}
-          </div>
-        )}
-      </div>
-
-
       {/* ///////////////////////Features 2//////////////////////////// */}
       <div className="md:px-16 flex flex-col px-8 gap-16 mb-11 dark:bg-black">
         <div className="md:flex bg-gray-200 dark:bg-green-900 p-3 m-4 rounded-2xl border-black border-r-2 border-b-2 md:bg-white  dark:md:bg-black md:border-none ">
@@ -315,12 +257,20 @@ By Vivek and Vranda`,
             <div>
               <button
                 className="bg-green-500 font-semibold text-sm md:text-base  p-2 md:px-6 border-black border-b-2 md:border-b-4 rounded-lg hover:text-white hover:shadow-sm hover:bg-green-700"
-                onClick={(e) => sendEmail(email)}
+                onClick={(e) => {
+                  sendEmail(email);
+                  handleClick();
+                }}
               >
                 Subscribe
               </button>
             </div>
           </div>
+          {show && (
+            <div className="fixed bottom-4 right-4 p-3 bg-green-700 text-white rounded-lg shadow-lg transition-opacity duration-500 opacity-100 font-medium">
+              {message}
+            </div>
+          )}
           <div className="flex-1 md:grid place-content-center hidden">
             <img src="/newsLetter.png" className="h-36 md:h-72 rounded-3xl" />
           </div>
