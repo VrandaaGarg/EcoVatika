@@ -12,7 +12,7 @@ import Home from "./components/Home/Home.jsx";
 import About from "./components/About/About.jsx";
 import EcoScore from "./components/EcoScore/EcoScore.jsx";
 import RecycleItemFinder from "./components/RecycleItemFinder/RecycleItemFinder.jsx";
-import SellingStore from "./components/SellingStore.jsx";
+import SellingStore from "./components/SellingStore/SellingStore.jsx";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
