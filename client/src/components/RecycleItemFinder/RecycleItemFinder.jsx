@@ -1,6 +1,7 @@
 import { useState } from "react";
 import DataItemFinder from "../../Data/DataItemFinder";
 import CardItemFinder from "./CardItemFinder";
+import { Fade } from "react-awesome-reveal";
 
 function RecycleItem() {
   const [searchItem, setSearchItem] = useState("bottle");
@@ -32,32 +33,34 @@ function RecycleItem() {
         </div>
       </div>
       <div className="flex flex-wrap justify-center gap-7">
-        {DataItemFinder.filter((val) => {
-          if (searchItem === "") {
-            return true;
-          } else if (
-            val.name.toLowerCase().includes(searchItem.toLowerCase())
-          ) {
-            return true;
-          } else {
-            return false;
-          }
-        }).map((val) => (
-          <div key={val.id}>
-            <CardItemFinder
-              name={val.name}
-              img={val.img}
-              recyclability={val.recyclability ? "Yes" : "No"}
-              materialComposition={val.materialComposition}
-              recyclingInstructions={val.recyclingInstructions}
-              typeOfMaterial={val.typeOfMaterial}
-              localRecyclingGuidelines={val.localRecyclingGuidelines}
-              environmentalImpact={val.environmentalImpact}
-              alternativeDisposalOptions={val.alternativeDisposalOptions}
-              upcyclingAndReuseIdeas={val.upcyclingAndReuseIdeas}
-            />
-          </div>
-        ))}
+        <Fade>
+          {DataItemFinder.filter((val) => {
+            if (searchItem === "") {
+              return true;
+            } else if (
+              val.name.toLowerCase().includes(searchItem.toLowerCase())
+            ) {
+              return true;
+            } else {
+              return false;
+            }
+          }).map((val) => (
+            <div key={val.id}>
+              <CardItemFinder
+                name={val.name}
+                img={val.img}
+                recyclability={val.recyclability ? "Yes" : "No"}
+                materialComposition={val.materialComposition}
+                recyclingInstructions={val.recyclingInstructions}
+                typeOfMaterial={val.typeOfMaterial}
+                localRecyclingGuidelines={val.localRecyclingGuidelines}
+                environmentalImpact={val.environmentalImpact}
+                alternativeDisposalOptions={val.alternativeDisposalOptions}
+                upcyclingAndReuseIdeas={val.upcyclingAndReuseIdeas}
+              />
+            </div>
+          ))}
+        </Fade>
       </div>
     </div>
   );
