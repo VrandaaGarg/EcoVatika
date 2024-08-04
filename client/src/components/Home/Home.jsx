@@ -9,17 +9,6 @@ import { Fade, Zoom, Slide, Flip } from "react-awesome-reveal";
 
 function Home() {
   const [email, setEmail] = useState("");
-  const [message, setMessage] = useState("");
-
-  const [show, setShow] = useState(false);
-  const handleClick = () => {
-    setMessage(" 🥳Congratulations! You have Registered");
-    setShow(true);
-    setTimeout(() => {
-      setShow(false);
-      setMessage("");
-    }, 4000);
-  };
 
   const baseUrl = "http://localhost:5000";
 
@@ -291,33 +280,10 @@ By Vivek and Vranda`,
                 </button>
               </div>
             </div>
-
             <div className="flex-1 md:grid place-content-center hidden">
               <img src="/newsLetter.png" className="h-36 md:h-72 rounded-3xl" />
             </div>
           </div>
-
-            <div>
-              <button
-                className="bg-green-500 font-semibold text-sm md:text-base  p-2 md:px-6 border-black border-b-2 md:border-b-4 rounded-lg hover:text-white hover:shadow-sm hover:bg-green-700"
-                onClick={(e) => {
-                  sendEmail(email);
-                  handleClick();
-                }}
-              >
-                Subscribe
-              </button>
-            </div>
-          </div>
-          {show && (
-            <div className="fixed bottom-4 right-4 p-3 bg-green-700 text-white rounded-lg shadow-lg transition-opacity duration-500 opacity-100 font-medium">
-              {message}
-            </div>
-          )}
-          <div className="flex-1 md:grid place-content-center hidden">
-            <img src="/newsLetter.png" className="h-36 md:h-72 rounded-3xl" />
-          </div>
-
         </div>
       </Zoom>
 
