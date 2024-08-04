@@ -10,7 +10,7 @@ const Faqs = () => {
     {
       question: "How can I contact customer support?",
       answer:
-        " Subscribe to our newsletter to get the latest updates and announcements directly to your inbox. Visit our 'Contact Us' section to fill out the feedback form with your queries or concerns. Additionally, you can send us an email at ecovatika@gmail.com, and our support team will get back to you as soon as possible.",
+        " Subscribe to our newsletter to get the latest updates and announcements directly to your inbox. Additionally, you can send us an email at ecovatika@gmail.com, and our support team will get back to you as soon as possible.",
     },
     {
       question: "What is EcoScore?",
